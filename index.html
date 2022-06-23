@@ -5,8 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PointMedian</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 115 115%22><text y=%22.9em%22 font-size=%2290%22>⏺️</text></svg>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            box-sizing: border-box;
+
+            height: calc(100% - 40px);
+        }
+
+        body>div {
+            min-height: 100%;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+
+        }
+
         main section {
             width: 100%;
             text-align: center;
@@ -15,24 +35,38 @@
         #Saisie_au_clavier {
             padding-top: 36px;
         }
+
+        footer {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
+    <div>
+        <header>
+            <h1>⏺️ PointMedian.fr</h1>
+        </header>
+        <main>
+            <p>Copier uniquement le point médian en cliquant sur le bouton suivant&nbsp;:<button type="button"
+                    id="copyPoint">copier <code>·</code></button></p>
+            <p>Utiliser l'automate si dessous pour faire transformer logiquement les "." en "·"&nbsp;:</p>
+            <textarea id="source"
+                name="textarea-name">Bienvenue à tous.tes sur ce site. Transformer rapidement vos "." en "·". Merci aux utilisateur.ices du point médian !</textarea>
 
-    <header>
-        <h1>PointMedian.fr</h1>
-    </header>
-    <main>
-        <h2>L'automate</h2>
-        <textarea id="source"
-            name="textarea-name">Bienvenue à tous.tes sur ce site. Transformer rapidement vos "." en "·". Merci aux utilisateur.ices du point médian !</textarea>
+            <textarea id="result"></textarea>
+            <section>
+                <button type="button" id="copy">copier</button>
+            </section>
+            <p>
+                <i>
+                    La logique de l'automate est simple. Chaque point directement encadré par deux lettres minuscules
+                    est remplacé un point médian. Pour me contacter pour une erreur ou un message, cela se
+                    passe <a title="sur GitHub" href="https://github.com/aloisdg/pointmedian/issues/new">sur GitHub</a>.
+                </i>
+            </p>
 
-        <textarea id="result"></textarea>
-        <section>
-            <button id="copy">copier</button>
-        </section>
-        <!--
+            <!--
   <h2 id="Saisie_au_clavier">Saisie au clavier [<a href="https://fr.wikipedia.org/wiki/Point_m%C3%A9dian#Saisie_au_clavier">Wikipédia</a>]</h2>
   <p>Sur GNU/Linux&nbsp;:
   </p>
@@ -74,8 +108,13 @@
   </ul>
 
 -->
-    </main>
 
+        </main>
+        <footer>
+            ©&nbsp;Copyright&nbsp;2022&nbsp;aloisdg. <a title="GitHub"
+                href="https://github.com/aloisdg/pointmedian">Code&nbsp;Source</a>&nbsp;under&nbsp;🄯&nbsp;Copyleft
+        </footer>
+    </div>
     <script>
         const dot = '.';
         const interpunkt = '·';
@@ -84,6 +123,7 @@
 
         const isLowerLetter = (c) => isLetter(c) && c === c.toLowerCase()
 
+        // match [a-zà-öø-ÿ](\.)[a-zà-öø-ÿ]
         const isBetweenLowercaseLetters = (source, i) =>
             i > 0 &&
             (i + 1) < source.length &&
@@ -105,11 +145,12 @@
         updateResult(sourceElement.value)
 
 
-        const copy = async () => {
-            return await navigator.clipboard.writeText(document.querySelector("#result").value);
+        const copy = async (content) => {
+            return await navigator.clipboard.writeText(content);
         }
 
-        document.querySelector("#copy").onclick = copy
+        document.querySelector("#copy").onclick = () => copy(document.querySelector("#result").value)
+        document.querySelector("#copyPoint").onclick = () => copy(interpunkt)
     </script>
 </body>
 
