@@ -1,0 +1,116 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PointMedian</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <style>
+        main section {
+            width: 100%;
+            text-align: center;
+        }
+
+        #Saisie_au_clavier {
+            padding-top: 36px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>PointMedian.fr</h1>
+    </header>
+    <main>
+        <h2>L'automate</h2>
+        <textarea id="source"
+            name="textarea-name">Bienvenue à tous.tes sur ce site. Transformer rapidement vos "." en "·". Merci aux utilisateur.ices du point médian !</textarea>
+
+        <textarea id="result"></textarea>
+        <section>
+            <button id="copy">copier</button>
+        </section>
+        <!--
+  <h2 id="Saisie_au_clavier">Saisie au clavier [<a href="https://fr.wikipedia.org/wiki/Point_m%C3%A9dian#Saisie_au_clavier">Wikipédia</a>]</h2>
+  <p>Sur GNU/Linux&nbsp;:
+  </p>
+  <ul>
+    <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>⇧ Maj</kbd>&nbsp;+&nbsp;<kbd>;</kbd>&nbsp;: oss / français (variante), oss_latin9 / français (variante, Latin-9 uniquement), mac / français (Macintosh), oss_nodeadkeys / français (variante, sans touche morte), oss_sundeadkeys / français (variante, touches mortes Sun)</li>
+    <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>⇧ Maj</kbd>&nbsp;+&nbsp;<kbd>1</kbd>&nbsp;: latin9 / français (variante obsolète), latin9_nodeadkeys / français (variante obsolète, sans touche morte), latin9_sundeadkeys / français (variante obsolète, touche morte Sun)</li>
+    <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>:</kbd>&nbsp;: français, français (sans touche morte), français (touches mortes Sun), belge</li>
+    <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>.</kbd>&nbsp;: français Suisse (clavier générique 105 touches PC)</li>
+    <li><kbd>⇧ Maj</kbd>&nbsp;+&nbsp;<kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>.</kbd>&nbsp;: bepo / français (Bépo, ergonomique, façon Dvorak), bepo_latin9 / français (Bépo, ergonomique, façon Dvorak, Latin-9 uniquement),</li>
+    <li><kbd>⇧ Maj</kbd>&nbsp;+&nbsp;<kbd>*</kbd> (du pavé numérique)&nbsp;: oss / français (variante), bre / français (breton), oss_nodeadkey / français (variante, sans touche morte), oss_sundeadkeys / français (variante, touches mortes Sun)</li>
+    <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>*</kbd> (du pavé numérique)&nbsp;: oss_latin9 / français (variante, Latin-9 uniquement), bepo / français (Bépo, ergonomique, façon Dvorak), bepo_latin9 / français (Bépo, ergonomique, façon Dvorak, Latin-9 uniquement)</li>
+    <li>Avec une touche compose&nbsp;: <kbd>Compose</kbd>&nbsp;+&nbsp;<kbd>^</kbd>&nbsp;+&nbsp;<kbd>.</kbd> ou <kbd>Compose</kbd>&nbsp;+&nbsp;<kbd>.</kbd>&nbsp;+&nbsp;<kbd>-</kbd>.</li>
+  </ul>
+  <p>Sur macOS, on peut obtenir le point médian en appuyant sur les touches suivantes :
+  </p>
+  <ul>
+    <li><kbd>⌥ alt</kbd>&nbsp;+&nbsp;<kbd>⇧ maj</kbd>&nbsp;+&nbsp;<kbd>F</kbd> avec un agencement de clavier français ou belge ;</li>
+    <li><kbd>⌥ alt</kbd>&nbsp;+&nbsp;<kbd>⇧ maj</kbd>&nbsp;+&nbsp;<kbd>H</kbd> avec un agencement de clavier espagnol, canadien multilingue ou suisse français ;</li>
+    <li><kbd>⌥ alt</kbd>&nbsp;+&nbsp;<kbd>⇧ maj</kbd>&nbsp;+&nbsp;<kbd>9</kbd> avec un agencement de clavier anglais américain, britannique, canadien anglais ou allemand ;</li>
+    <li><kbd>⌥ alt</kbd>&nbsp;+&nbsp;<kbd>;</kbd> ou <kbd>⌥ alt</kbd>&nbsp;+&nbsp;<kbd>⇧ maj</kbd>&nbsp;+&nbsp;<kbd>Λ</kbd> avec un agencement de clavier grec ;</li>
+    <li><kbd>⌥ alt</kbd>+<kbd>0</kbd><kbd>0</kbd><kbd>B</kbd><kbd>7</kbd> avec l’agencement de clavier universel (Unicode Hex).</li>
+  </ul>
+  <p>Sur Windows&nbsp;:
+  </p>
+  <ul>
+    <li>avec la combinaison de touche Alt&nbsp;:
+      <ul>
+        <li><kbd>Alt</kbd>+<kbd>2</kbd><kbd>5</kbd><kbd>0</kbd>, le point milieu (·) apparait en relâchant <kbd>Alt</kbd></li>
+        <li><kbd>Alt</kbd>+<kbd>0</kbd><kbd>1</kbd><kbd>8</kbd><kbd>3</kbd>, le point milieu (·) apparait en relâchant <kbd>Alt</kbd>.</li>
+        <li><kbd>0</kbd><kbd>0</kbd><kbd>B</kbd><kbd>7</kbd> suivi de <kbd>Alt</kbd>+<kbd>C</kbd> (ou de <kbd>Alt</kbd>+<kbd>X</kbd>) dans les applications RichEdit (par exemple <a href="/wiki/WordPad" title="WordPad">WordPad</a>)&nbsp;;</li>
+      </ul>
+    </li>
+    <li><kbd>Maj</kbd>&nbsp;+&nbsp;<kbd>3</kbd> avec un agencement de clavier catalan ou espagnol ;</li>
+  </ul>
+  <p>Sur un clavier Bépo&nbsp;:
+  </p>
+  <ul>
+    <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>⇧ maj</kbd>&nbsp;+&nbsp;<kbd>.</kbd>.</li>
+  </ul>
+
+-->
+    </main>
+
+    <script>
+        const dot = '.';
+        const interpunkt = '·';
+
+        const isLetter = (c) => c.toLowerCase() != c.toUpperCase();
+
+        const isLowerLetter = (c) => isLetter(c) && c === c.toLowerCase()
+
+        const isBetweenLowercaseLetters = (source, i) =>
+            i > 0 &&
+            (i + 1) < source.length &&
+            isLowerLetter(source[i - 1]) &&
+            isLowerLetter(source[i + 1]);
+
+        const replaceDot = source => {
+            return [...source].map((c, i) => c === dot && isBetweenLowercaseLetters(source, i) ? interpunkt : c).join("");
+        }
+
+        const updateResult = (source) => {
+            document.querySelector("#result").value = replaceDot(source)
+        }
+
+        const sourceElement = document.querySelector("#source");
+
+        sourceElement.oninput = (e) => updateResult(e.target.value)
+
+        updateResult(sourceElement.value)
+
+
+        const copy = async () => {
+            return await navigator.clipboard.writeText(document.querySelector("#result").value);
+        }
+
+        document.querySelector("#copy").onclick = copy
+    </script>
+</body>
+
+</html>
