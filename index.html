@@ -181,9 +181,24 @@
 
         sourceElement.oninput = (e) => updateResult(e.target.value)
 
-        updateResult(sourceElement.value)
+        const text = sourceElement.value;
+        sourceElement.value = "";
 
-
+// inspiration from https://w3collective.com/animated-typing-text-effect/
+document.addEventListener("DOMContentLoaded", () => {
+  let letter = 0;
+  const typeText = () => {
+    if (letter < text.length) {
+      document.getElementById("source").value += text.charAt(letter);
+      //document.getElementById("result").value += text.charAt(letter);
+      updateResult(document.getElementById("source").value);
+      letter++;
+      const speed = Math.floor(Math.random() * 75) + 25;
+      setTimeout(typeText, speed);
+    }
+  }
+  typeText();
+});
         const copy = async (content) => {
             return await navigator.clipboard.writeText(content);
         }
