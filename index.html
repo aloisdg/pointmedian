@@ -11,32 +11,7 @@
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 115 115%22><text y=%22.9em%22 font-size=%2290%22>⏺️</text></svg>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <style>
-        html,
-        body {
-            height: 100%;
-        }
-
-        body {
-            box-sizing: border-box;
-
-            height: calc(100% - 40px);
-        }
-
-        body>div {
-            min-height: 100%;
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-
-        }
-
-        main section {
-            width: 100%;
-            text-align: center;
-        }
-
-        footer {
-            text-align: center;
-        }
+        
     </style>
 </head>
 
@@ -157,60 +132,11 @@ Merci aux utilisateur.ices du point médian !</textarea>
 
         </main>
         <footer>
-            ©&nbsp;Copyright&nbsp;2022&nbsp;aloisdg. <a title="GitHub"
+            ©&nbsp;Copyright&nbsp;2023&nbsp;aloisdg. <a title="GitHub"
                 href="https://github.com/aloisdg/pointmedian">Code&nbsp;Source</a>&nbsp;under&nbsp;🄯&nbsp;Copyleft
         </footer>
     </div>
-    <script>
-        const dot = '.';
-        const interpunkt = '·';
-
-        const isLetter = (c) => c.toLowerCase() != c.toUpperCase();
-
-        const isLowerLetter = (c) => isLetter(c) && c === c.toLowerCase()
-
-        // match [a-zà-öø-ÿ](\.)[a-zà-öø-ÿ]
-        const isBetweenLowercaseLetters = (source, i) =>
-            i > 0 &&
-            (i + 1) < source.length &&
-            isLowerLetter(source[i - 1]) &&
-            isLowerLetter(source[i + 1]);
-
-        const replaceDot = source => {
-            return [...source].map((c, i) => c === dot && isBetweenLowercaseLetters(source, i) ? interpunkt : c).join("");
-        }
-
-        const updateResult = (source) => {
-            document.querySelector("#result").value = replaceDot(source)
-        }
-
-        const sourceElement = document.querySelector("#source");
-
-        sourceElement.oninput = (e) => updateResult(e.target.value)
-
-        // inspiration from https://w3collective.com/animated-typing-text-effect/
-        const text = sourceElement.value;
-        sourceElement.value = "";
-
-        document.addEventListener("DOMContentLoaded", () => {
-            let letter = 0;
-            const typeText = () => {
-                if (letter >= text.length)
-                    return;
-                sourceElement.value += text.charAt(letter);
-                updateResult(sourceElement.value);
-                letter++;
-                setTimeout(typeText, Math.floor(Math.random() * 50) + 25);
-            }
-            typeText();
-        });
-        const copy = async (content) => {
-            return await navigator.clipboard.writeText(content);
-        }
-
-        document.querySelector("#copy").onclick = () => copy(document.querySelector("#result").value)
-        document.querySelector("#copyPoint").onclick = () => copy(interpunkt)
-    </script>
+    <script src="script.js" defer></script>
 </body>
 
 </html>

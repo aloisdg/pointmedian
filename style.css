@@ -1,0 +1,25 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+
+  height: calc(100% - 40px);
+}
+
+body > div {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main section {
+  width: 100%;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
