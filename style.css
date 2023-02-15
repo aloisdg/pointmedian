@@ -20,6 +20,14 @@ main section {
   text-align: center;
 }
 
+button {
+    width: 100%
+}
+
+#copyPoint {
+    margin-right: 6px;
+}
+
 footer {
   text-align: center;
 }
