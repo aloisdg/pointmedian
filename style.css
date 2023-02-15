@@ -20,14 +20,21 @@ main section {
   text-align: center;
 }
 
-button {
+#copy {
     width: 100%
 }
 
 #copyPoint {
-    margin-right: 6px;
+    margin-left: 6px;
 }
 
 footer {
   text-align: center;
+}
+
+h1 {
+    display: block;
+    text-indent: 60px;
+    background: url(icon.svg) no-repeat;
+    background-size: 50px 50px;
 }
