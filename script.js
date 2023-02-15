@@ -5,21 +5,22 @@ const isLetter = (c) => c.toLowerCase() !== c.toUpperCase();
 
 const isLowerLetter = (c) => isLetter(c) && c === c.toLowerCase();
 
-// match [a-zà-öø-ÿ](\.)[a-zà-öø-ÿ]
-const isBetweenLowercaseLetters = (source, i) =>
+// match [a-zà-öø-ÿ](\.)[a-zà-öø-ÿ], maybe
+const isDotInLowerLetters = (source, c, i) =>
+  c === dot &&
   i > 0 &&
   i + 1 < source.length &&
   isLowerLetter(source[i - 1]) &&
   isLowerLetter(source[i + 1]);
 
-const replaceDot = (source) => [...source]
+const replaceDots = (source) => [...source]
   .map((c, i) =>
-    c === dot && isBetweenLowercaseLetters(source, i) ? interpunkt : c
+    isDotInLowerLetters(source, c, i) ? interpunkt : c
   )
   .join("");
 
 const updateResult = (source) => {
-  document.querySelector("#result").value = replaceDot(source);
+  document.querySelector("#result").value = replaceDots(source);
 };
 
 const sourceElement = document.querySelector("#source");
