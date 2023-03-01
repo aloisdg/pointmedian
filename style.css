@@ -59,8 +59,8 @@ h1 {
 @media (prefers-color-scheme: dark) {
 :root {
   --background-body: #201A41;
-  --background: #0D0A20;
-  --background-alt: #1a242f;
+  --background: #171230;
+  --background-alt: #0D0A20;
   --selection: #1c76c5;
   --text-main: #dbdbdb;
   --text-bright: #fff;
@@ -116,3 +116,23 @@ h1 {
     background-position: left bottom, right top;
   }
 /* } */
+
+@media only screen and (max-width: 768px) {
+  .actions {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .actions #copy {
+    width: 100%;
+  }
+
+  .actions > div:last-child {
+    display: grid;
+    place-items: center;
+  }
+}
+
+button {
+  box-shadow:  0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
