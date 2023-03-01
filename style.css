@@ -57,28 +57,28 @@ h1 {
 }
 
 @media (prefers-color-scheme: dark) {
-:root {
-  --background-body: #201A41;
-  --background: #171230;
-  --background-alt: #0D0A20;
-  --selection: #1c76c5;
-  --text-main: #dbdbdb;
-  --text-bright: #fff;
-  --text-muted: #a9b1ba;
-  --links: #41adff;
-  --focus: #810089;
-  --border: #45405F;
-  --code: #ffbe85;
-  --animation-duration: 0.1s;
-  --button-base: #810089;
-  --button-hover: #911499;
-  --scrollbar-thumb: var(--button-hover);
-  --scrollbar-thumb-hover: rgb(0, 0, 0);
-  --form-placeholder: #a9a9a9;
-  --form-text: #fff;
-  --variable: #d941e2;
-  --highlight: #efdb43;
-}
+  :root {
+    --background-body: #201A41;
+    --background: #171230;
+    --background-alt: #0D0A20;
+    --selection: #1c76c5;
+    --text-main: #dbdbdb;
+    --text-bright: #fff;
+    --text-muted: #a9b1ba;
+    --links: #41adff;
+    --focus: #810089;
+    --border: #45405F;
+    --code: #ffbe85;
+    --animation-duration: 0.1s;
+    --button-base: #810089;
+    --button-hover: #911499;
+    --scrollbar-thumb: var(--button-hover);
+    --scrollbar-thumb-hover: rgb(0, 0, 0);
+    --form-placeholder: #a9a9a9;
+    --form-text: #fff;
+    --variable: #d941e2;
+    --highlight: #efdb43;
+  }
 
 /* @media screen and (min-width: 780px) { */
   body {
