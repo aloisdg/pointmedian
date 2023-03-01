@@ -116,6 +116,7 @@ h1 {
     background-position: left bottom, right top;
   }
 /* } */
+}
 
 @media only screen and (max-width: 768px) {
   .actions {
@@ -136,3 +137,35 @@ h1 {
 button {
   box-shadow:  0px 12px 24px -12px rgba(0, 0, 0, 0.5);
 }
+
+details:focus-within {
+  box-shadow:0 0 0 2px #0096bfab;
+  box-shadow:0 0 0 2px var(--focus);
+}
+
+details > summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary > span:last-child:after {
+  content: "🢔";
+  color: var(--button-base);
+  transform: scale(1.5) rotate(0);
+  position: absolute;
+  margin-left: -1em;
+  transition: transform 0.3s ease;
+}
+
+details > summary:hover > span:last-child:after {
+  color: var(--button-hover);
+}
+
+details[open] > summary > span:last-child:after {
+  transform: scale(1.5) rotate(-90deg);
+}
+
