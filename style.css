@@ -1,6 +1,6 @@
 body,
 html {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -9,23 +9,40 @@ body {
   height: calc(100% - 40px);
 }
 
-div {
+body > div {
   min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-main section {
-  width: 100%;
-  text-align: center;
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
 }
 
-#copy {
-    width: 100%
+hr {
+  width: 100%;
 }
+
+details {
+  margin: 0;
+}
+
+/* main section {
+  width: 100%;
+  text-align: center;
+} */
 
 #copyPoint {
     margin-left: 6px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 150px auto;
+  align-items: center;
 }
 
 footer {
@@ -49,12 +66,12 @@ h1 {
   --text-bright: #fff;
   --text-muted: #a9b1ba;
   --links: #41adff;
-  --focus: #961591; /* to confirm */
-  --border: #526980;
+  --focus: #810089;
+  --border: #45405F;
   --code: #ffbe85;
   --animation-duration: 0.1s;
   --button-base: #810089;
-  --button-hover: #510056; /* to confirm */
+  --button-hover: #911499;
   --scrollbar-thumb: var(--button-hover);
   --scrollbar-thumb-hover: rgb(0, 0, 0);
   --form-placeholder: #a9a9a9;
@@ -62,3 +79,40 @@ h1 {
   --variable: #d941e2;
   --highlight: #efdb43;
 }
+
+/* @media screen and (min-width: 780px) { */
+  body {
+    /* d9d9d9 at 20% is d9d9d933 */
+    /* inspired by https://www.kirupa.com/css/circles_radial_gradient.htm */
+    /* note that I use a gradient but a blur may be better */
+        background-image: url(asset/curves-left-bottom.svg),
+      url(asset/curves-right-top.svg),
+      radial-gradient(
+        /*54px/2+55px = 82px*/ 54px circle at top 82px right 204.5px,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*192px/2-30px = 66px*/ 192px circle at 97.5% 66px,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*119px/2+220px = 279.5px*/ 119px circle at 90% 279.5px,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*54px/2+40px = 67px*/ 54px circle at 67px 50%,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*192px/2-80px = 16px*/ 192px circle at 16px 70%,
+        #d9d9d933 20%,
+        transparent 50%
+      );
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right top;
+  }
+/* } */
