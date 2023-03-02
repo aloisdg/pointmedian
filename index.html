@@ -42,37 +42,42 @@
             <h1>PointMedian.cool</h1>
         </header>
         <main>
-            <p>Utiliser l'automate si dessous pour transformer logiquement les "." en "·"&nbsp;!</p>
-            <label for="source">Origine&nbsp;:</label>
-            <textarea id="source" placeholder="texte d'entrée">Bienvenue à tous.tes sur ce site. Transformer rapidement vos "." en "·".
-Merci aux utilisateur.ices du point médian !</textarea>
-            <label for="result">Résultat&nbsp;:</label>
-            <textarea id="result" placeholder="texte de sortie"></textarea>
-            <section>
-                <button type="button" id="copy">copier le résultat</button>
+            <div>Utiliser l'automate si dessous pour transformer logiquement les "." en "·"&nbsp;!</div>
+            <div><label for="source">Origine&nbsp;:</label>
+                <textarea id="source" placeholder="texte d'entrée">Bienvenue à tous.tes. Transformer rapidement vos "." en "·".
+Merci aux utilisateur.ices du point médian !
+
+Cliquer sur la source pour vider ce champs.</textarea>
+            </div>
+            <div><label for="result">Résultat&nbsp;:</label>
+                <textarea id="result" placeholder="texte de sortie"></textarea>
+            </div>
+            <section class="actions">
+                <div><button type="button" id="copy">Copier le résultat</button></div>
+
+                <div><span>Copier uniquement</span> <span>le point médian :</span></div>
+                <div><button type="button" id="copyPoint">·</button></div>
+
             </section>
-            <p>
+            <div>
                 <i>
                     La logique de l'automate est simple. Chaque point directement encadré par deux lettres minuscules
                     est remplacé par un point médian. Pour me contacter pour une erreur ou un message, cela se
                     passe <a title="sur GitHub" href="https://github.com/aloisdg/pointmedian/issues/new">sur GitHub</a>.
                 </i>
-            </p>
+            </div>
 
             <hr>
 
-            <p><span>Copier uniquement le point médian&nbsp;:</span><button type="button" id="copyPoint">·</button></p>
-            <hr>
-
-            <p>
+            <div>
                 Le point médian peut aussi se saisir directement depuis le clavier de votre ordinateur. Wikipédia offre
                 une section sur le sujet, <a
                     href="https://fr.wikipedia.org/wiki/Point_m%C3%A9dian#Saisie_au_clavier">Point médian - Saise au
                     clavier</a>, dont voici une copie&nbsp;:
-            </p>
+            </div>
 
             <details>
-                <summary>Sur GNU/Linux&nbsp;:</summary>
+                <summary><span>Sur GNU/Linux&nbsp;:</span><span aria-hidden="true"></span></summary>
                 <ul>
                     <li><kbd>AltGr</kbd>&nbsp;+&nbsp;<kbd>⇧ Maj</kbd>&nbsp;+&nbsp;<kbd>;</kbd>&nbsp;: oss / français
                         (variante), oss_latin9 / français (variante, Latin-9 uniquement), mac / français (Macintosh),
@@ -106,7 +111,7 @@ Merci aux utilisateur.ices du point médian !</textarea>
             </details>
 
             <details>
-                <summary>Sur macOs&nbsp;:</summary>
+                <summary><span>Sur macOs&nbsp;:</span><span aria-hidden="true"></span></summary>
                 <ul>
                     <li><kbd>⌥ alt</kbd>&nbsp;+&nbsp;<kbd>⇧ maj</kbd>&nbsp;+&nbsp;<kbd>F</kbd> avec un agencement de
                         clavier
@@ -125,7 +130,7 @@ Merci aux utilisateur.ices du point médian !</textarea>
             </details>
 
             <details>
-                <summary>Sur Windows&nbsp;:</summary>
+                <summary><span>Sur Windows&nbsp;:</span><span aria-hidden="true"></span></summary>
                 <ul>
                     <li>avec la combinaison de touche Alt&nbsp;:
                         <ul>
