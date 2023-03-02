@@ -14,6 +14,15 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "aloisdg",
+      "name": "Aloïs de Gouvello",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3449303?v=4",
+      "profile": "http://aloisdg.netlify.app",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

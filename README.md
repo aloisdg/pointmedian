@@ -19,6 +19,7 @@ Ce projet est le code source de [pointmedian.cool](https://pointmedian.cool), un
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/Polibous"><img src="https://avatars.githubusercontent.com/u/125921506?v=4?s=100" width="100px;" alt="Polibous"/><br /><sub><b>Polibous</b></sub></a><br /><a href="#design-Polibous" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://aloisdg.netlify.app"><img src="https://avatars.githubusercontent.com/u/3449303?v=4?s=100" width="100px;" alt="Aloïs de Gouvello"/><br /><sub><b>Aloïs de Gouvello</b></sub></a><br /><a href="https://github.com/aloisdg/pointmedian/commits?author=aloisdg" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
