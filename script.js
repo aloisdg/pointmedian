@@ -28,24 +28,17 @@ const sourceElement = document.querySelector("#source");
 sourceElement.oninput = (e) => updateResult(e.target.value);
 
 // inspiration from https://w3collective.com/animated-typing-text-effect/
-const text = sourceElement.value;
-sourceElement.value = "";
-
-let hardStop = false;
-
-sourceElement.addEventListener("click", () => {
-    hardStop = true;
-    sourceElement.value = "";
-    document.querySelector("#result").value = "";
-    console.log("test")
-}, { once: true });
+// const text = sourceElement.value;
+// sourceElement.value = "";
+const sourcePlaceholder = sourceElement.placeholder;
+sourceElement.placeholder = "";
 
 document.addEventListener("DOMContentLoaded", () => {
   let letter = 0;
   const typeText = () => {
-    if (hardStop || letter >= text.length) return;
-    sourceElement.value += text.charAt(letter);
-    updateResult(sourceElement.value);
+    if (letter >= sourcePlaceholder.length) return;
+    sourceElement.placeholder += sourcePlaceholder.charAt(letter);
+    document.querySelector("#result").placeholder = replaceDots(sourceElement.placeholder);
     letter++;
     setTimeout(typeText, Math.floor(Math.random() * 42) + 4.2);
   };
