@@ -14,18 +14,18 @@ const isDotInLowerLetters = (source, c, i) =>
   isLowerLetter(source[i + 1]);
 
 const replaceDots = (source) => [...source]
-  .map((c, i) =>
-    isDotInLowerLetters(source, c, i) ? interpunkt : c
-  )
-  .join("");
+  .reduce((result, c, i) => result + (isDotInLowerLetters(source, c, i) ? interpunkt : c),  "");
 
 const updateResult = (source) => {
-  document.querySelector("#result").value = replaceDots(source);
+  resultElement.value = replaceDots(source);
 };
 
 const sourceElement = document.querySelector("#source");
+const resultElement = document.querySelector("#result");
 
 sourceElement.oninput = (e) => updateResult(e.target.value);
+
+const randomTimeout = () => Math.floor(Math.random() * 42) + 4.2;
 
 // inspiration from https://w3collective.com/animated-typing-text-effect/
 const sourcePlaceholder = sourceElement.placeholder;
@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const typeText = () => {
     if (letter >= sourcePlaceholder.length) return;
     sourceElement.placeholder += sourcePlaceholder.charAt(letter);
-    document.querySelector("#result").placeholder = replaceDots(sourceElement.placeholder);
+    resultElement.placeholder = replaceDots(sourceElement.placeholder);
     letter++;
-    setTimeout(typeText, Math.floor(Math.random() * 42) + 4.2);
+    setTimeout(typeText, randomTimeout());
   };
   typeText();
 });
