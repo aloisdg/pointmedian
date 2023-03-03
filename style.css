@@ -1,6 +1,33 @@
+:root {
+  --focus: #810089;
+  --border: #45405F;
+  --button-base: #810089;
+  --button-hover: #911499;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #eae7f7;
+    --background-alt:#f3f2fb;
+  }
+
+  button {
+    color: white;
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-body: #201A41;
+    --background: #171230;
+    --background-alt: #0D0A20;
+  }
+}
+
 body,
 html {
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -9,23 +36,35 @@ body {
   height: calc(100% - 40px);
 }
 
-div {
+body > div {
   min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
-main section {
-  width: 100%;
-  text-align: center;
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0;
 }
 
-#copy {
-    width: 100%
+hr {
+  width: 100%;
+}
+
+details {
+  margin: 0;
 }
 
 #copyPoint {
     margin-left: 6px;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 150px auto;
+  align-items: center;
 }
 
 footer {
@@ -34,8 +73,105 @@ footer {
 }
 
 h1 {
+    transition: margin-left 0.3s ease-in;
     display: block;
+    margin-left: -60px;
     text-indent: 60px;
     background: url(icon.svg) no-repeat;
     background-size: 50px 50px;
 }
+
+@media (prefers-color-scheme: dark) {
+  body {
+    /* d9d9d9 at 20% is d9d9d933 */
+    /* inspired by https://www.kirupa.com/css/circles_radial_gradient.htm */
+    /* note that I use a gradient but a blur may be better */
+        background-image: url(asset/curves-left-bottom.svg),
+      url(asset/curves-right-top.svg),
+      radial-gradient(
+        /*54px/2+55px = 82px*/ 54px circle at top 82px right 204.5px,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*192px/2-30px = 66px*/ 192px circle at 97.5% 66px,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*119px/2+220px = 279.5px*/ 119px circle at 90% 279.5px,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*54px/2+40px = 67px*/ 54px circle at 67px 50%,
+        #d9d9d933 20%,
+        transparent 50%
+      ),
+      radial-gradient(
+        /*192px/2-80px = 16px*/ 192px circle at 16px 70%,
+        #d9d9d933 20%,
+        transparent 50%
+      );
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right top;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  h1 {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .actions {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .actions #copy {
+    width: 100%;
+  }
+
+  .actions > div:last-child {
+    display: grid;
+    place-items: center;
+  }
+}
+
+button {
+  box-shadow:  0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
+
+details:focus-within {
+  box-shadow:0 0 0 2px #0096bfab;
+  box-shadow:0 0 0 2px var(--focus);
+}
+
+details > summary {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary > span:last-child:after {
+  content: "🢔";
+  color: var(--button-base);
+  transform: scale(1.5) rotate(0);
+  position: absolute;
+  margin-left: -1em;
+  transition: transform 0.3s ease;
+}
+
+details > summary:hover > span:last-child:after {
+  color: var(--button-hover);
+}
+
+details[open] > summary > span:last-child:after {
+  transform: scale(1.5) rotate(-90deg);
+}
+

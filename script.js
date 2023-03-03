@@ -31,14 +31,23 @@ sourceElement.oninput = (e) => updateResult(e.target.value);
 const text = sourceElement.value;
 sourceElement.value = "";
 
+let hardStop = false;
+
+sourceElement.addEventListener("click", () => {
+    hardStop = true;
+    sourceElement.value = "";
+    document.querySelector("#result").value = "";
+    console.log("test")
+}, { once: true });
+
 document.addEventListener("DOMContentLoaded", () => {
   let letter = 0;
   const typeText = () => {
-    if (letter >= text.length) return;
+    if (hardStop || letter >= text.length) return;
     sourceElement.value += text.charAt(letter);
     updateResult(sourceElement.value);
     letter++;
-    setTimeout(typeText, Math.floor(Math.random() * 50) + 25);
+    setTimeout(typeText, Math.floor(Math.random() * 42) + 4.2);
   };
   typeText();
 });
