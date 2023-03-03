@@ -28,8 +28,6 @@ const sourceElement = document.querySelector("#source");
 sourceElement.oninput = (e) => updateResult(e.target.value);
 
 // inspiration from https://w3collective.com/animated-typing-text-effect/
-// const text = sourceElement.value;
-// sourceElement.value = "";
 const sourcePlaceholder = sourceElement.placeholder;
 sourceElement.placeholder = "";
 
